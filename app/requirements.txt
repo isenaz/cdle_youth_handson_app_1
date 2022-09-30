@@ -1,16 +1,10 @@
 Django
 pandas
 numpy
-pytorch
+torch
 transformers
 sklearn
 tqdm
-collections
-os
-random
-re
-glob
-warnings
 matplotlib
 seaborn
 
