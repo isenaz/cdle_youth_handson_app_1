@@ -129,8 +129,8 @@ dmypy.json
 .pyre/
 
 # .gitkeep
-.app/source/ChatBotApp/media/user_icons/.gitkeep
-.app/source/ChatBotApp/static/css/.gitkeep
-.app/source/ChatBotApp/static/img/.gitkeep
-.app/source/ChatBotApp/static/js/.gitkeep
-.app/database/.gitkeep
+!/app/source/ChatBotApp/media/user_icons/.gitkeep
+!/app/source/ChatBotApp/static/css/.gitkeep
+!/app/source/ChatBotApp/static/img/.gitkeep
+!/app/source/ChatBotApp/static/js/.gitkeep
+!/database/.gitkeep
