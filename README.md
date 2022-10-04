@@ -48,7 +48,7 @@ python manage.py runserver 0:8000
 ### ファイル構成
 source/ChatBotAppの直下に編集するファイルがある（※ChatBotAppフォルダは上位下位で2つあるが、以降で出てくるものは下位の層にあるものを指す）  
 
-#### ChatBotProjcet
+#### ChatBotProject
 - settings.py
   - pathなどの設定を書くファイル
 - urls.py
