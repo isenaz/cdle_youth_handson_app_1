@@ -1,0 +1,6 @@
+Django
+pandas
+numpy
+# django4.0以降、以下をinstallしないとformを作成する際にエラーが発生
+pytz == 2022.2.1
+tzdata == 2022.2
