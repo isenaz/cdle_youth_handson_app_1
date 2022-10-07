@@ -6,7 +6,7 @@
 ```
 # ターミナル上
 # git上のファイルを取得
-git clone [URL]
+git clone [ブランチ名] [URL]
 # ブランチを作成して切り替える
 git checkout -b [ブランチ名]
 # 作成・変更した全ファイルをadd
@@ -39,7 +39,7 @@ Python(Django)のコマンド
 プロジェクトやアプリケーションは作成済みなので実行の必要はない
 
 ```
-# DBのマイグレーション(多分初回の実行はしなくても大丈夫だと思いますが一応実行してください)
+# DBのマイグレーション
 python manage.py migrate
 # サーバーの起動
 python manage.py runserver 0:8000
@@ -56,7 +56,7 @@ source/ChatBotAppの直下に編集するファイルがある（※ChatBotApp�
 
 #### ChatBotApp
 - views.py
-  - viewを定義するファイル
+  - viewを定義するファイル viewはクラスを用いて定義していく
 - models.py
   - model(DBの設計)を定義するファイル
 - forms.py
