@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    container_name: django_cdle_app
+    build: ./app
+    volumes:
+     - ./app/source:/django
+    stdin_open: true
+    tty: true
+    ports:
+     - 8000:8000
+    image: app:django
+    # command: python manage.py runserver 0.0.0.0:8000
