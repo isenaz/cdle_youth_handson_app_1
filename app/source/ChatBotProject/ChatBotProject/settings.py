@@ -37,7 +37,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "ChatBotApp"
 ]
+
+AUTH_USER_MODEL = 'ChatBotApp.Users'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
