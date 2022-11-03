@@ -6,5 +6,5 @@ from .models import ChatBotModel
 # Create your views here.
 
 class ChatBot(ListView):
-    template_name = 'rooms/base.html'
+    template_name = 'rooms/room_kuramochi.html'
     model = ChatBotModel
