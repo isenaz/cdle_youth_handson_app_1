@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "ChatBotApp"
 ]
 
+AUTH_USER_MODEL = 'ChatBotApp.Users'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -130,3 +132,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [STATIC_DIR]
+
+# ログインした際にリダイレクトされるページ
+LOGIN_REDIRECT_URL = "/cdle_chatbot/my_page" 
+LOGOUT_REDIRECT_URL = "/cdle_chatbot/login"
