@@ -134,5 +134,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [STATIC_DIR]
 
 # ログインした際にリダイレクトされるページ
-LOGIN_REDIRECT_URL = "/cdle_chatbot/my_page" 
-LOGOUT_REDIRECT_URL = "/cdle_chatbot/login"
+LOGIN_REDIRECT_URL = "/mypage" 
+LOGOUT_REDIRECT_URL = "/"

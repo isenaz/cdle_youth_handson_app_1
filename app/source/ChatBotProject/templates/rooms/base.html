@@ -7,7 +7,7 @@
     <body>
         <nav class="navbar navbar-expand-;g navbar-light bg-light">
             {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'chatbot_app:my_page' %}">設定ページ</a>
+            <a class="navbar-brand" href="{% url 'chatbot_app:mypage' %}">設定ページ</a>
             <a class="navbar-brand" href="{% url 'chatbot_app:logout' %}">ログアウト</a>
             {% else %}
             <a class="navbar-brand" href="{% url 'chatbot_app:regist' %}">ユーザー登録</a>
