@@ -3,6 +3,7 @@ from .forms import RegistForm, UserLoginForm
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView, View
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class RegistUserView(CreateView):
     template_name = "login/register.html"
@@ -16,6 +17,6 @@ class UserLogoutView(LogoutView):
     pass
     
 
-class MyPageView(TemplateView):
+class MyPageView(LoginRequiredMixin, TemplateView):
     template_name = "rooms/my_page.html"
     
