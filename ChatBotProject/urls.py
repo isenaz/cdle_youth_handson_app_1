@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("cdle_chatbot/", include("ChatBotApp.urls")),
+    path("cdle_chatbot/", include("ChatBotApp.urls")), # 変更が必要そう？
 ]
 
 # 開発時の設定
