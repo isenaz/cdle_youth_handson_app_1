@@ -39,8 +39,8 @@ class Users(AbstractBaseUser, PermissionsMixin):
     def get_absolute_url(self):
         return reverse_lazy("chatbot_app:regist")
 
-# チャットbot用モデル
 class ChatBotModel(models.Model):
-    chat_bot_type = models.IntegerField()
+    # チャットbotのデータに関するクラス
+    
+    name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
-
