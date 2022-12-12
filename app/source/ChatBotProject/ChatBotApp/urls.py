@@ -1,7 +1,13 @@
 from django.urls import path
-from . import views
+from .views import (
+    RegistUserView, UserLoginView, UserLogoutView, MyPageView
+)
 
 app_name = "chatbot_app"
 urlpatterns = [
-    path('chatbot/', views.ChatBot.as_view(), name='chatbot')
+    path("regist/", RegistUserView.as_view(), name="regist"),
+    path("", UserLoginView.as_view(), name="login"),
+    path("logout/", UserLogoutView.as_view(), name="logout"),
+    path("mypage/", MyPageView.as_view(), name="mypage"),
+    path("chat/", views.ChatBot.as_view(), name='chatbot'), 
 ]
