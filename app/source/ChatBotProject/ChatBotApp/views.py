@@ -21,7 +21,7 @@ class UserLogoutView(LogoutView):
 class MyPageView(TemplateView):
     template_name = "rooms/my_page.html"
 
-class ChatBot(ListView):
-    template_name = 'rooms/base.html'
+class ChatBotView(ListView):
+    template_name = 'rooms/chat.html'
     model = ChatBotModel
     

@@ -1,0 +1,74 @@
+{% extends 'rooms/base.html' %}
+
+{% block sidebar %}
+<div class="d-flex flex-column align-items-stretch" style="width: 300px;">
+      <div class="list-group border-bottom scrollarea">
+        <a href="{% url 'chatbot_app:chatbot' %}" class="list-group-item list-group-item-action active" aria-current="true">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">大喜利ボット</strong>
+          </div>
+        </a>
+        <a href="{% url 'chatbot_app:chatbot' %}" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">画像ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">一問一答ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">おすすめ店ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">関連情報ボット</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+<!-- New html-->
+<div class="d-flex flex-column align-items-stretch" style="width: 300px;">
+      <div class="list-group border-bottom scrollarea">
+        {% for i in Object.items %}
+        <a href="{% url 'chatbot_app:chatbot' %}" class="list-group-item list-group-item-action active" aria-current="true">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">大喜利ボット</strong>
+          </div>
+        </a>
+        <a href="{% url 'chatbot_app:chatbot' %}" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">画像ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">一問一答ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">おすすめ店ボット</strong>
+          </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+            <strong class="h5">関連情報ボット</strong>
+          </div>
+        </a>
+    </div>
+</div>
+{% endblock sidebar %}
