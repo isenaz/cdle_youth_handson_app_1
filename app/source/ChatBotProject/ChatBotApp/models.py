@@ -22,6 +22,21 @@ class UserManager(BaseUserManager):
         user.save(using=self._db) # DBにユーザーを保存
         return user
 
+    def create_superuser(self, username, email, password=None):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        user = self.model(
+            username = username,
+            email = email,
+        )
+        user.set_password(password)
+        user.is_staff = True
+        user.is_active = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
 
 class Users(AbstractBaseUser, PermissionsMixin):
     #テーブルを定義するクラス
@@ -39,3 +54,4 @@ class Users(AbstractBaseUser, PermissionsMixin):
     
     def get_absolute_url(self):
         return reverse_lazy("chatbot_app:regist")
+    
