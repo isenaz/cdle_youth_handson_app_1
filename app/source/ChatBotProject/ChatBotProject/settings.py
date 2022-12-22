@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "ChatBotApp"
+    "ChatBotApp",
+    "widget_tweaks",
 ]
 
 AUTH_USER_MODEL = 'ChatBotApp.Users'
