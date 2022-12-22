@@ -1,8 +1,43 @@
 {% extends 'login/base.html' %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login/regist.css' %}">
+{% endblock %}
+
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="ユーザー登録">
-</form>
-{% endblock  %}
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-2 col-md-4 col-lg-6">
+            <div class="login_form side_padding top_margin">
+                <div class="top_padding">
+                    <h3>Acount Registration
+                        {% load static %}
+                        <img src="{% static 'img/cdle_logo.png' %}">
+                    </h3> 
+                </div> 
+                <br>
+                <p>Chatbotをはじめよう!</p>
+                <p>好きなチャットボットを選んで、会話を楽しみましょう!</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% load widget_tweaks %} 
+                    <div class="text_bold">ユーザーネーム</div>
+                    {{ form.username|add_class:"input_box" }} <br><br>
+                    <div class="text_bold">メールアドレス</div>
+                    {{ form.email|add_class:"input_box" }} <br><br>
+                    <div class="text_bold">パスワード</div>
+                    {{ form.password|add_class:"input_box" }} <br>
+                    <div class="text_small">英数字8文字以上</div>
+                    <br>
+                    <input class="login_submit" type="submit" value="登録"> 
+                </form>
+                <br><br>
+                <div class="bottom_padding underline">
+                    <a href={% url 'chatbot_app:login' %}>アカウントをお持ちの方</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

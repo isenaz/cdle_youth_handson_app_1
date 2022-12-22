@@ -14,6 +14,7 @@ class UserManager(BaseUserManager):
         if not username: 
             raise ValueError("ユーザーネームを入力してください")
         
+        
         user = self.model(
             username=username,
             email=email
