@@ -1,22 +1,30 @@
 {% extends 'login/base.html' %}
 {% block content %}
 <div class="container">
-    <div class="col-2 col-md-4 col-lg-6" >
-    
-        <div class="login_form side_padding">
-            <div class="top_padding"><h3>Sign in</h2></div> 
-            <br>
-            <p>こんにちは、あなたにあったチャットbotを選んで会話を楽しみましょう!</p>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="サインイン">
-            </form>
-            <br>
-            <div class="underline">パスワードをお忘れの方</div>
-            <br><br>
-            <div class="bottom_padding underline">アカウントをお持ちでない場合</div>
-        </div>
+    <div class="row justify-content-end">
+        <div class="col-2 col-md-4 col-lg-6">
+            <div class="login_form side_padding top_margin">
+                <div class="top_padding">
+                    <h3>Sign in
+                        {% load static %}
+                        <img src="{% static 'img/cdle_logo.png' %}">
+                    </h3> 
+                </div> 
+                <br>
+                <p>こんにちは、あなたに合ったチャットbotを選んで会話を楽しみましょう!</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="サインイン">
+                </form>
+                <br>
+                <div class="underline">パスワードをお忘れの方</div>
+                <br><br>
+                <div class="bottom_padding underline">
+                    <a href={% url 'chatbot_app:regist' %}>アカウントをお持ちでない場合</a>
+                </div>
+            </div>
     </div>
+</div>
 </div>
 {% endblock  %}

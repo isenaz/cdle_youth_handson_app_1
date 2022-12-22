@@ -1,8 +1,6 @@
 .login_form{
     text-align: left;
     background-color: #ADD8E6;
-
-    /* margin: 20px 10px; */
 }
 
 .top_padding{
@@ -14,8 +12,12 @@
 }
 
 .side_padding{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.top_margin{
+    margin-top: 100px;
 }
 
 .underline{
