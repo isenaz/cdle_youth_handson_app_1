@@ -28,6 +28,14 @@
                     <div class="underline">パスワードをお忘れの方</div>
                     <br>
                     <input class="login_submit" type="submit" value="サインイン">
+                    <br>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div {% if message.tags %}class="{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
                 </form>
                 <br><br>
                 <div class="bottom_padding underline">

@@ -5,6 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 
 
+
 class RegistForm(forms.ModelForm):
     username = forms.CharField(label="ユーザーネーム")
     email = forms.EmailField(label="メールアドレス")
@@ -22,7 +23,14 @@ class RegistForm(forms.ModelForm):
         user.save()
         return user
     
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data["password"]
+        if len(password) < 8:
+            raise forms.ValidationError("パスワードは8文字以上です。")
+    
 class UserLoginForm(AuthenticationForm):
     username = forms.EmailField(label="メールアドレス")
     password = forms.CharField(label="パスワード",
                                widget=forms.PasswordInput())
+    

@@ -30,7 +30,15 @@
                     {{ form.password|add_class:"input_box" }} <br>
                     <div class="text_small">英数字8文字以上</div>
                     <br>
-                    <input class="login_submit" type="submit" value="登録"> 
+                    <input class="login_submit" type="submit" value="登録">
+                    <br>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div {% if message.tags %}class="{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
                 </form>
                 <br><br>
                 <div class="bottom_padding underline">
