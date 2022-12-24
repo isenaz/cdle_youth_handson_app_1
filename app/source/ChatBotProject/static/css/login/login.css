@@ -8,7 +8,7 @@
 }
 
 .bottom_padding{
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .side_padding{
@@ -29,6 +29,10 @@
 
 .text_bold{
     font-weight: bold;
+}
+
+.text_small{
+    font-size: small;
 }
 
 .underline{
