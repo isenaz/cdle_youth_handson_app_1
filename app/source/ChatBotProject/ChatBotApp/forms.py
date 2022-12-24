@@ -27,8 +27,8 @@ class RegistForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data["password"]
-        if len(password) < 8:
-            raise forms.ValidationError("パスワードは8文字以上です。")
+        # if len(password) < 8:
+            # raise forms.ValidationError("パスワードは8文字以上です。")
         if not re.search(r"\d+", password):
             raise forms.ValidationError("パスワードに数字が含まれていません。")
         elif not re.search(r"[A-Za-z]+", password):
@@ -43,4 +43,12 @@ class UserPasswordResetForm(PasswordResetForm):
     pass
 
 class UserSetPasswordForm(SetPasswordForm):
-    pass
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data["new_password1"]
+        # if len(password) < 8:
+            # raise forms.ValidationError("パスワードは8文字以上です。")
+        if not re.search(r"\d+", password):
+            raise forms.ValidationError("パスワードに数字が含まれていません。")
+        elif not re.search(r"[A-Za-z]+", password):
+            raise forms.ValidationError("パスワードにアルファベットが含まれていません。")
