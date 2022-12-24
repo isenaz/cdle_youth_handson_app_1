@@ -1,15 +1,16 @@
 from django.shortcuts import render
-from .forms import RegistForm, UserLoginForm
+from .forms import RegistForm, UserLoginForm, UserPasswordResetForm
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView, View
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView, PasswordResetConfirmView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.urls import reverse_lazy
 
 class RegistUserView(CreateView):
     template_name = "login/register.html"
     form_class = RegistForm
+    success_url = reverse_lazy("chatbot_app:login")
     
     def form_invalid(self, form):
         # エラーからメッセージのみを取り出す
@@ -34,6 +35,27 @@ class UserLoginView(LoginView):
 class UserLogoutView(LogoutView):
     pass
     
+class UserPasswordReset(PasswordResetView):
+    template_name = "login/password_reset.html"
+    email_template_name = "login/password_reset/message.txt" # メールの中身
+    subject_template_name = "login/password_reset/subject.txt" # メールタイトル
+    form_class = UserPasswordResetForm
+    success_url = reverse_lazy("chatbot_app:password_reset_done")
+    
+    def form_invalid(self, form):
+        messages.add_message(self.request, messages.ERROR, "正しいメールアドレスを入力してください。")
+        return super().form_invalid(form)
+    
+
+class UserPasswordResetDone(PasswordResetDoneView):
+    template_name = "login/password_reset_done.html"
+
+
+class UserPasswordResetConfirm(PasswordResetConfirmView):
+    pass
+class USerPasswordResetComplete(PasswordResetCompleteView):
+    pass
+
 
 class MyPageView(LoginRequiredMixin, TemplateView):
     template_name = "rooms/my_page.html"

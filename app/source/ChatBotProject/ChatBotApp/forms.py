@@ -1,7 +1,7 @@
 from django import forms
 from .models import Users
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm
 from django.core.exceptions import ValidationError
 import re
 
@@ -39,3 +39,8 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(label="パスワード",
                                widget=forms.PasswordInput())
     
+class UserPasswordResetForm(PasswordResetForm):
+    pass
+
+class UserSetPasswordForm(SetPasswordForm):
+    pass

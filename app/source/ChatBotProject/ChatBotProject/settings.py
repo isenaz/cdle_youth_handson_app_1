@@ -22,6 +22,21 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'cdle.chatbot.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'ppbfmckvnhxelvwz'
+EMAIL_PORT = 465 #メールサーバーで指定されているポート
+EMAIL_USE_SSL = True #メールサーバーで確認
+
+# # メールサーバーへの接続設定
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'spam@gmail.com'
+# EMAIL_HOST_PASSWORD = 'gmailパスワード'
+# EMAIL_USE_TLS = True
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
