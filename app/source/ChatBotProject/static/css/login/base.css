@@ -1,0 +1,9 @@
+body {
+    position: relative;
+    background-image: url(../../img/login/login_base.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+}

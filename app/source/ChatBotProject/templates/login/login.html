@@ -1,8 +1,48 @@
 {% extends 'login/base.html' %}
+
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/login/login.css' %}">
+{% endblock %}
+
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="ログイン">
-</form>
-{% endblock  %}
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-2 col-md-4 col-lg-6">
+            <div class="login_form side_padding top_margin">
+                <div class="top_padding">
+                    <h3>Sign in
+                        {% load static %}
+                        <img src="{% static 'img/cdle_logo.png' %}">
+                    </h3> 
+                </div> 
+                <br>
+                <p>こんにちは、あなたに合ったChatbotを選んで会話を楽しみましょう!</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% load widget_tweaks %} 
+                    <div class="text_bold">メールアドレス</div>
+                    {{ form.username|add_class:"input_box" }} <br><br>
+                    <div class="text_bold">パスワード</div>
+                    {{ form.password|add_class:"input_box" }} <br>
+                    <div class="underline"><a href={% url 'chatbot_app:password_reset' %}>パスワードをお忘れの方</a></div>
+                    <br>
+                    <input class="login_submit" type="submit" value="サインイン">
+                    <br>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div {% if message.tags %}class="{{ message.tags }}"{% endif %}>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %} 
+                </form>
+                <br><br>
+                <div class="bottom_padding underline">
+                    <p><a href={% url 'chatbot_app:regist' %}>アカウントをお持ちでない方</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

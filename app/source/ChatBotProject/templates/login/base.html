@@ -3,9 +3,12 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/login/base.css' %}">
+        {% block head %}{% endblock  %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-;g navbar-light bg-light">
+        {% comment %} <nav class="navbar navbar-expand-;g navbar-light bg-light">
             {% if user.is_authenticated %}
             <a class="navbar-brand" href="{% url 'chatbot_app:mypage' %}">設定ページ</a>
             <a class="navbar-brand" href="{% url 'chatbot_app:logout' %}">ログアウト</a>
@@ -14,6 +17,12 @@
             <a class="navbar-brand" href="{% url 'chatbot_app:login' %}">ログイン</a>
             {% endif %}
         </nav>
+        {% endcomment %}
         {% block content %}{% endblock  %}
+
+
+
+        
+        
     </body>
 </html>
