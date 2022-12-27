@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +21,15 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# メールサーバーへの接続設定
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = 'cdle.chatbot.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'ppbfmckvnhxelvwz'
+EMAIL_PORT = 587 #メールサーバーで指定されているポート
+EMAIL_USE_TLS = True #メールサーバーで確認
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "ChatBotApp"
+    "ChatBotApp",
+    "widget_tweaks",
 ]
 
 AUTH_USER_MODEL = 'ChatBotApp.Users'
@@ -124,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -136,3 +147,10 @@ STATICFILES_DIRS = [STATIC_DIR]
 # ログインした際にリダイレクトされるページ
 LOGIN_REDIRECT_URL = "/mypage" 
 LOGOUT_REDIRECT_URL = "/"
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.WARNING: 'alert alert-warning',
+    messages.ERROR: 'alert alert-danger',
+}

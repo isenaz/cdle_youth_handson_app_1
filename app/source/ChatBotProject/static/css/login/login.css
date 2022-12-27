@@ -1,0 +1,44 @@
+.login_form{
+    text-align: left;
+    background-color: #ADD8E6;
+}
+
+.top_padding{
+    padding-top: 50px;
+}
+
+.bottom_padding{
+    padding-bottom: 50px;
+}
+
+.side_padding{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.top_margin{
+    margin-top: 100px;
+}
+
+.login_submit{
+    color: #fafdff;
+    background-color: #6c2463;
+    font-size: small;
+    padding: 5px 15px;
+}
+
+.text_bold{
+    font-weight: bold;
+}
+
+.text_small{
+    font-size: small;
+}
+
+.underline{
+    text-decoration: underline; 
+}
+
+.input_box{
+    width:75%
+}

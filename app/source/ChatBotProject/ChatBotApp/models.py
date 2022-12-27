@@ -13,6 +13,7 @@ class UserManager(BaseUserManager):
         if not username: 
             raise ValueError("ユーザーネームを入力してください")
         
+        
         user = self.model(
             username=username,
             email=email
@@ -20,22 +21,22 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db) # DBにユーザーを保存
         return user
-    
-    # スーパーユーザの作成
-    def create_superuser(self, username, email, password):
+
+    def create_superuser(self, username, email, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
         """
-        user = self.create_user(
-            username,
-            email,
-            password=password,
+        user = self.model(
+            username = username,
+            email = email,
         )
-        user.is_admin = True
+        user.set_password(password)
+        user.is_staff = True
+        user.is_active = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
-
 
 class Users(AbstractBaseUser, PermissionsMixin):
     #テーブルを定義するクラス
@@ -59,3 +60,4 @@ class ChatBotModel(models.Model):
     
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
+
