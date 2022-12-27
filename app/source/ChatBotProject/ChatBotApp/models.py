@@ -20,6 +20,21 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db) # DBにユーザーを保存
         return user
+    
+    # スーパーユーザの作成
+    def create_superuser(self, username, email, password):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        user = self.create_user(
+            username,
+            email,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
 
 
 class Users(AbstractBaseUser, PermissionsMixin):
@@ -27,7 +42,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     
     username = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
-    image_url = models.CharField(max_length=255)
+    image_url = models.CharField(max_length=255, default=False) 
     is_active = models.BooleanField(default=True) # 後でactiveを操作するクラスを作成して、デフォルトをFalseにする
     is_staff = models.BooleanField(default=False)
     
