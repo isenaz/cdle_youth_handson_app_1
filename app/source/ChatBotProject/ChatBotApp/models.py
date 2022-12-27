@@ -59,5 +59,4 @@ class ChatBotModel(models.Model):
     # チャットbotのデータに関するクラス
     
     name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
 
