@@ -85,3 +85,5 @@ class ChatBotView(ListView):
     template_name = 'rooms/chat.html'
     model = ChatBotModel
     
+    
+    
