@@ -1,0 +1,21 @@
+.list-group-item-sidebar {
+    background-color: #4B5F91;
+    color: white;
+}
+
+.list-group-item-sidebar:hover {
+    background-color: #434e6b;
+    color: white;
+}
+
+.active-sidebar {
+    background-color: #D9D9D9;
+    color: black;
+    text-shadow: 2px 2px 2px rgb(160 160 160);
+}
+
+.active-sidebar:hover {
+    background-color: #D9D9D9;
+    color: black;
+    text-shadow: 2px 2px 2px rgb(160 160 160);
+}

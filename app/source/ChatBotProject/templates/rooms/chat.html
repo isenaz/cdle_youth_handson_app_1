@@ -1,0 +1,24 @@
+{% extends 'rooms/base.html' %}
+
+{% load static %}
+
+{% block sidebar %}
+<!-- Chatbot一覧 -->
+<div class="d-flex flex-column align-items-stretch" style="width: 300px;">
+  <div class="list-group border-bottom scrollarea">
+    {% for item in object_list %}
+    {% url 'chatbot_app:chatbot' item.pk as current_url %}
+    <a 
+      href="{% url 'chatbot_app:chatbot' item.pk %}" 
+      class="list-group-item list-group-item-action list-group-item-sidebar {% if request.path == current_url %} active-sidebar {% endif %}" 
+      aria-current="true"
+    >
+      <div class="d-flex flex-row align-items-center justify-content-between">
+        <img src="https://picsum.photos/50" class="rounded-circle" alt="...">
+        <strong class="h5">{{ item.name }}</strong>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock sidebar %}

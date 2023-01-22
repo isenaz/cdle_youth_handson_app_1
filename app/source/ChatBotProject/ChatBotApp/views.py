@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .models import ChatBotModel
 from .forms import RegistForm, UserLoginForm, UserPasswordResetForm, UserSetPasswordForm
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView, View
+from django.views.generic.list import ListView
 from django.contrib.auth.views import (
     LoginView, LogoutView, 
     PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView, PasswordResetConfirmView
@@ -9,6 +11,7 @@ from django.contrib.auth.views import (
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
+
 
 class RegistUserView(CreateView):
     template_name = "login/register.html"
@@ -77,4 +80,10 @@ class UserPasswordResetComplete(PasswordResetCompleteView):
 
 class MyPageView(LoginRequiredMixin, TemplateView):
     template_name = "rooms/my_page.html"
+
+class ChatBotView(ListView):
+    template_name = 'rooms/chat.html'
+    model = ChatBotModel
+    
+    
     

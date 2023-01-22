@@ -4,7 +4,6 @@ from django.contrib.auth.models import(
 )
 from django.urls import reverse_lazy
 # Create your models here.
-
 class UserManager(BaseUserManager):
     # データを挿入するクラス
     def create_user(self, username, email, password=None):
@@ -44,7 +43,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     
     username = models.CharField(max_length=255)
     email = models.EmailField(max_length=255, unique=True)
-    image_url = models.CharField(max_length=255)
+    image_url = models.CharField(max_length=255, default=False) 
     is_active = models.BooleanField(default=True) # 後でactiveを操作するクラスを作成して、デフォルトをFalseにする
     is_staff = models.BooleanField(default=False)
     
@@ -55,4 +54,9 @@ class Users(AbstractBaseUser, PermissionsMixin):
     
     def get_absolute_url(self):
         return reverse_lazy("chatbot_app:regist")
+
+class ChatBotModel(models.Model):
+    # チャットbotのデータに関するクラス
     
+    name = models.CharField(max_length=255)
+

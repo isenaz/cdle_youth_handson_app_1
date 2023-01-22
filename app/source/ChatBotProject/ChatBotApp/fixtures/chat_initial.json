@@ -1,0 +1,37 @@
+[
+    {
+        "model": "ChatBotApp.ChatBotModel",
+        "pk": 1,
+        "fields": {
+            "name": "大喜利ボット"
+        }
+    },
+    {
+        "model": "ChatBotApp.ChatBotModel",
+        "pk": 2,
+        "fields": {
+            "name": "画像ボット"
+        }
+    },
+    {
+        "model": "ChatBotApp.ChatBotModel",
+        "pk": 3,
+        "fields": {
+            "name": "一問一答ボット"
+        }
+    },
+    {
+        "model": "ChatBotApp.ChatBotModel",
+        "pk": 4,
+        "fields": {
+            "name": "おすすめ店ボット"
+        }
+    },
+    {
+        "model": "ChatBotApp.ChatBotModel",
+        "pk": 5,
+        "fields": {
+            "name": "関連報告ボット"
+        }
+    }
+]
