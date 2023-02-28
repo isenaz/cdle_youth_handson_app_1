@@ -2,15 +2,59 @@
 
 {% load static %}
 
+{% block main %}
+<!--メインのチャット画面 参照: https://www.youtube.com/watch?v=SF1k_Twr9cg -->
+{% for item in object_list %}
+  {% url 'chatbot_app:chatbot' item.pk as current_url %}
+  {% if request.path == current_url %}
+    <div class="p-3 text-left">
+      <h1 class="text-xl lg:text-2xl text-black">{{ item.name }}</h1>
+    </div>
+    
+  {% endif %}
+{% endfor %}
+<div class="lg:w-4/6 mx-1 lg:mx-auto p-1 bg-white rounded-xl">
+  <div class="chat-messages space-y-3" id="chat-messages">
+    <p class="font-semibold">ユーザー名</p>
+    <div class="p-4 mb-4 bg-gray-200 rounded-xl">
+      <p>チャットbotを楽しみましょう。</p>
+    </div>
+
+    <p class="font-semibold">Username</p>
+    <div class="p-4 mb-4 bg-gray-200 rounded-xl">
+      <p>The message lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <p class="font-semibold">ユーザー名</p>
+    <div class="p-4 mb-4 bg-gray-200 rounded-xl">
+      
+      <p>チャットbotを楽しみましょう。</p>
+    </div>
+  </div>
+</div>
+
+<div class="mt-8 ml-2 mr-2 p-3 bg-gray-300 rounded-xl">
+  <form method="post" action="." class="flex">
+    <input type="text" name="content" class="flex-1 mr-3" placeholder=" Your message..." id="chat-message-input">
+
+    <button
+      class="px-3 py-2 rounded-xl text-white bg-black hover:bg-gray-400"
+      id="chat-message-submit"
+    >送信</button>
+  </form>
+</div>
+{% endblock main %}
+
+
 {% block sidebar %}
 <!-- Chatbot一覧 -->
-<div class="d-flex flex-column align-items-stretch" style="width: 300px;">
+<div class="d-flex flex-column align-items-stretch">
   <div class="list-group border-bottom scrollarea">
     {% for item in object_list %}
     {% url 'chatbot_app:chatbot' item.pk as current_url %}
     <a 
       href="{% url 'chatbot_app:chatbot' item.pk %}" 
-      class="list-group-item list-group-item-action list-group-item-sidebar {% if request.path == current_url %} active-sidebar {% endif %}" 
+      class="mt-1 list-group-item list-group-item-action list-group-item-sidebar {% if request.path == current_url %} active-sidebar {% endif %}" 
       aria-current="true"
     >
       <div class="d-flex flex-row align-items-center justify-content-between">
