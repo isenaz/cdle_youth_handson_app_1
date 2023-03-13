@@ -32,6 +32,15 @@
     </div>
   </div>
 </div>
+<div class="text">
+  <ul>
+    {% for chat in chat_list %}
+    <li>{{ chat.user_name }}</li>
+    <li>{{ chat.content}}</li>
+    {% endfor %}
+  </ul>
+  {{a}}
+</div>
 
 <div class="mt-8 ml-2 mr-2 p-3 bg-gray-300 rounded-xl">
   <form method="post" action="." class="flex">

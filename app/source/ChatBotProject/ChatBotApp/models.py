@@ -60,3 +60,9 @@ class ChatBotModel(models.Model):
     
     name = models.CharField(max_length=255)
 
+class ChatContentModel(models.Model):
+    # チャットの会話内容に関するクラス
+
+    user_name = models.CharField(max_length=255)
+    chatbot_name = models.ManyToManyField(ChatBotModel) # Check
+    content = models.TextField()

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ChatBotModel
+from .models import ChatBotModel, ChatContentModel
 from .forms import RegistForm, UserLoginForm, UserPasswordResetForm, UserSetPasswordForm
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView, View
@@ -84,6 +84,18 @@ class MyPageView(LoginRequiredMixin, TemplateView):
 class ChatBotView(ListView):
     template_name = 'rooms/chat.html'
     model = ChatBotModel
+
+    # 2つ目のモデルのデータを受け取る
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['chat_list'] = ChatContentModel.objects.all # Need fillter
+        return context
+
+    def chat():
+        a = 1
+        return a
+
     
-    
-    
+def chatbotfunc(request):
+    object_list = BoardModel.objects.all()
+    return render(request, 'chat.html', {'object_list':object_list})
