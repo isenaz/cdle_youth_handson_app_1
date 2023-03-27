@@ -57,12 +57,25 @@ class Users(AbstractBaseUser, PermissionsMixin):
 
 class ChatBotModel(models.Model):
     # チャットbotのデータに関するクラス
-    
+
     name = models.CharField(max_length=255)
 
-class ChatContentModel(models.Model):
+class ChatsModel(models.Model):
+    # チャットルームに関するクラス
+
+    chat_bot_id = models.IntegerField()
+    user_id = models.IntegerField()
+
+class PostsModel(models.Model):
     # チャットの会話内容に関するクラス
+    
+    # モデルの接続 
+    # chat_id = models.ForeignKey(ChatsModel, on_delete=models.CASCADE)
+    # chat_bot_id = models.ForeignKey(ChatBotModel, on_delete=models.CASCADE)
+    # user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
 
     user_name = models.CharField(max_length=255)
     chatbot_name = models.ManyToManyField(ChatBotModel) # Check
-    content = models.TextField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_human = models.BooleanField(default=True)

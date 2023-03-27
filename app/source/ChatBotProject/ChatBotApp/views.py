@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import ChatBotModel, ChatContentModel
+from django.shortcuts import render, redirect
+from .models import ChatBotModel, PostsModel
 from .forms import RegistForm, UserLoginForm, UserPasswordResetForm, UserSetPasswordForm
 from django.views.generic.edit import CreateView, FormView
 from django.views.generic.base import TemplateView, View
@@ -84,16 +84,37 @@ class MyPageView(LoginRequiredMixin, TemplateView):
 class ChatBotView(ListView):
     template_name = 'rooms/chat.html'
     model = ChatBotModel
+    # 書き換え防止
+    read_only_fields = ('created_at')
 
     # 2つ目のモデルのデータを受け取る
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['chat_list'] = ChatContentModel.objects.all # Need fillter
+        context['chat_list'] = PostsModel.objects.all # Need fillter
         return context
+    
+    # 返信するための関数（ここに各々の機械学習モデルを入れる）
+    def reply(self, message):
+        reply = message + 'の返信'
+        return reply
 
-    def chat():
-        a = 1
-        return a
+    # 入力を受け取り、モデル（データベース）に記録。返信を作成しモデルに記録
+    def post(self, request, pk, *args, **kwargs):
+        # 入力
+        message = request.POST.get('content')
+        user_name = 'ログインしている人の名前' # ログインを使って自動取得させる
+        PostsModel.objects.create(user_name=user_name, message=message)
+        
+        # 返信
+        reply = self.reply(message)
+        user_name = 'チャットbotの名前' # 自動入力にする
+        PostsModel.objects.create(user_name=user_name, message=reply, is_human=False)
+        
+        return redirect(f'/chat/{pk}/')# render(request, 'rooms/chat.html', )
+        
+    
+        
+
 
     
 def chatbotfunc(request):
