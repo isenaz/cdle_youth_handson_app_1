@@ -90,7 +90,7 @@ class ChatBotView(ListView):
     # 2つ目のモデルのデータを受け取る
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['chat_list'] = PostsModel.objects.all # Need fillter
+        context['chat_list'] = PostsModel.objects.all# Need fillter
         return context
     
     # 返信するための関数（ここに各々の機械学習モデルを入れる）
@@ -103,12 +103,12 @@ class ChatBotView(ListView):
         # 入力
         message = request.POST.get('content')
         user_name = 'ログインしている人の名前' # ログインを使って自動取得させる
-        PostsModel.objects.create(user_name=user_name, message=message)
+        PostsModel.objects.create(user_name=user_name, message=message, chat_bot_id=pk)
         
         # 返信
         reply = self.reply(message)
-        user_name = 'チャットbotの名前' # 自動入力にする
-        PostsModel.objects.create(user_name=user_name, message=reply, is_human=False)
+        user_name = 'チャットbotの名前' # 自動入力にする ChatBotModel.objects...
+        PostsModel.objects.create(user_name=user_name, message=reply, is_human=False, chat_bot_id=pk)
         
         return redirect(f'/chat/{pk}/')# render(request, 'rooms/chat.html', )
         

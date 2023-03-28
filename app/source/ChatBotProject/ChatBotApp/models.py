@@ -79,3 +79,4 @@ class PostsModel(models.Model):
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     is_human = models.BooleanField(default=True)
+    chat_bot_id = models.IntegerField()

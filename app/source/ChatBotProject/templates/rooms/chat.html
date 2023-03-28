@@ -18,11 +18,14 @@
 <div class="lg:w-4/6 mx-1 lg:mx-auto p-1 bg-white rounded-xl">
   <div class="chat-messages space-y-3" id="chat-messages">
     {% for chat in chat_list %}
+      {% url 'chatbot_app:chatbot' chat.chat_bot_id as current_url %}
+      {% if request.path == current_url %}
       <!-- is_humanで人とbotの表示位置を変更する -->
       <p class="font-semibold {% if chat.is_human is True %} text-right {% endif %}">{{ chat.user_name }}</p>
       <div class="p-4 mb-4 bg-gray-200 rounded-xl{% if chat.is_human is True %} position-static end-0 text-right ml-5 {% endif %}">
         <p>{{ chat.message }}</p>
       </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
