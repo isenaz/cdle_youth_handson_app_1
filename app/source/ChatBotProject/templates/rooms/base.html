@@ -7,9 +7,12 @@
         <!-- CSS -->
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/rooms/sidebar.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/rooms/chat.css' %}">
 
         <!-- Required meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-;g navbar-light bg-light">
@@ -23,7 +26,17 @@
         </nav>
         {% block content %}{% endblock  %}
 
-        {% block sidebar %}
-        {% endblock sidebar %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3" styels="width: 300px;">
+                    {% block sidebar %}
+                    {% endblock sidebar %}
+                </div>
+                <div class="col-9">
+                    {% block main %}
+                    {% endblock main %}
+                </div>
+            </div>
+        </div>
     </body>
 </html>
